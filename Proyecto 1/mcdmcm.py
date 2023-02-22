@@ -21,18 +21,15 @@ def select():
     print(f"Escogiste la pareja ({first_number}, {second_number}).")
     if first_number<second_number:
         print(f"{first_number} es menor que {second_number}.")
-        #la función math.floor es la función piso
-        #cociente = math.floor(second_number/first_number)
-        #residuo = second_number%first_number
         euclides(second_number, first_number)
     #elif es tener varias condiciones hasta que se escriba un else (la última posibilidad)
     elif second_number<first_number:
         print(f"{second_number} es menor que {first_number}.")
-
+        euclides(first_number, second_number)
     #la última condición se pone con "else"
     else:
         print(f"{first_number} es igual que {second_number}.")
-        print("El máximo común divisor es 1.")
+        euclides(first_number, second_number)
         #Línea de comando donde se indica la ecuación para que 1 se exprese como
         #combinación lineal de los números iguales
         print("El mínimo común múltiplo es 3.")
