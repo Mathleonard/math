@@ -1,13 +1,11 @@
-#librería para poder utilizar funciones matemáticas
-import math
 #a y b son los números dados inicialmente
 def mcd(a, b):
     producto = abs(a*b)
-    print(f"El mínimo común múltiplo es {math.floor(producto/b)}.")
+    print(f"El mínimo común múltiplo es {producto//b}.")
 
 #en la primera iteración, "b" es el número más grande, y "r" el número más pequeño
 def euclides(b, r):
-    cociente_e = math.floor(b/r)
+    cociente_e = b//r
     residuo_e = b%r
     print(f"{b}={r}({cociente_e})+{residuo_e}")
     #!= significa "no es igual a"
