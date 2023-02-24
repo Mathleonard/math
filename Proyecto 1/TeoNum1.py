@@ -30,6 +30,9 @@ def mcm(a, b, r):
     print(f"El mínimo común múltiplo es {m}.")
     return m
 
+def algoritmo_euclides():
+    return 0
+
 def elegir():
     #Si el usuario no ingresa un número, la app finaliza con un error.
     #'int()' indica que lo que prcede se convertirá a un número.
@@ -38,7 +41,7 @@ def elegir():
     number_a = int(input("Escribe tu primer número: "))
     number_b = int(input("Escribe tu segundo número: "))
     print(f"Escogiste la pareja ({number_a}, {number_b}).")
-
+    arreglo_procedimiento = []
     if number_a<number_b:
         print(f"{number_a} es menor que {number_b}, es decir, {number_a}<{number_b}")
         #La variable 'mcd' llama a la función algoritmo_div y almacena el valor que regresa.
