@@ -1,13 +1,10 @@
 def algoritmo_div(n, a):
     #Cuando nada más hay un '=', el programa guarda el valor del lado derecho
     # a las variables del lado izquierdo.
-    #El uso de '//' es para obtener el cociente redondeado hacia abajo
-    cociente_ad = n//a
     #El uso de '%' es para obtener el residuo del cociente: el módulo
     residuo_ad = n%a
     #'f' permite ingresar variables dentro de un texto común (string)
     #Las variables se ponen entre llaves, cuando estamos en texto común
-    procedimiento_txt = (f"{n}={a}({cociente_ad})+({residuo_ad})")
 
     #La función 'if' empieza como un 'si (condición)'
     #'!=' significa 'no es igual a'
@@ -20,6 +17,29 @@ def algoritmo_div(n, a):
         s = abs(a)
         #'return <>' regresa el valor a donde fue llamada la función
         return s
+
+#Es el Algortimo Extendido de Euclides
+def euclides(a, b):
+    if b == 0:
+        return 0,1,0
+    u0 = 1
+    u1 = 0
+    v0 = 0
+    v1 = 1
+    while b != 0:
+        q = a//b
+        r = a - b * q
+        u = u0 - q * u1
+        v = v0 - q * v1
+        #Modificar a,b
+        a = b
+        b = r
+        #Modificaciones para la siguiente iteración
+        u0 = u1
+        u1 = u
+        v0 = v1
+        v1 = v
+    return  u0
 
 #Definición de la función phi
 def phi(m):
@@ -34,6 +54,7 @@ def phi(m):
             listaPrimosRelativos.append(iteracion_numero)
         #Una vez evaluado, pasamos al siguiente número (Le añadimos uno a la variable)    
         iteracion_numero += 1
+    return listaPrimosRelativos
 
 #La función 'elegir()' permite al usuario ingresar 2 números.
 #Estos números servirán para desarrollar la actividad.
@@ -50,9 +71,18 @@ def elegir():
         m = int(input("Escribe el módulo: "))
         if m > 1:
             positivo = True
-            phi(m)
+            listaPrimosRelativos = phi(m)
         else:
             print ("Escogiste un número inválido.")     
-
-    
+    relativo = False
+    while relativo == False:
+        a = int(input(f"Escribe un primo relativo de {m}: "))
+        if a in listaPrimosRelativos:
+            relativo = True
+        else:
+            print (f"No escogiste un primo relativo de {m}.")
+    print(f"Vamos a obtener el inverso de {a} (mod {m}).")
+    x0 = euclides(a, m)
+    x = x0%m
+    print (f"El inverso de {a} (mod {m}) es {x}.")
 elegir()

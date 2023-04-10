@@ -71,7 +71,7 @@ def phi(n):
     numeroPrimosRelativos = len(listaPrimosRelativos)
     print(f"La función φ({n})={numeroPrimosRelativos}.")
     #Si se desea ver la lista de los primos relativos, quitar el '#' de a continuación
-    #print(f"Los elementos de la función φ({n})={listaPrimosRelativos}.")
+    print(f"Los elementos de la función φ({n})={listaPrimosRelativos}.")
     
 def elegir():
     #Si el usuario no ingresa un número, la app finaliza con un error.
