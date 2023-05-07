@@ -69,16 +69,23 @@ def ordm(a, m, lista_divisores):
     #Definimos la lista para los órdenes posibles
     ordenPosible = []
 
+    #Buscamos para cada uno de los elementos de la lista
     for divisor in lista_divisores:
 
+
+    #Calculamos el módulo de a^n para cada n divisor
         e = (a**(divisor))%m
 
+    #Buscamos que e sea congruente a 1 módulo m
         if e == 1:
-
+        
+        #Añadimos el divisor a la lista de órdenes candidatos
             ordenPosible.append(divisor)
 
+    #Al finalizar el proceso, se indica a "o" como el mínimo "e"
     o = min(ordenPosible)
 
+    #Devolvemos el valor de "o"
     return o
 
 def elegir():
@@ -104,6 +111,7 @@ def elegir():
 
             print ("Escogiste un número inválido.")
 
+    #Elegimos una segunda condición, ya que también debe ser un entero positivo
     valid_input_2 = False
 
     while not valid_input_2:
@@ -120,10 +128,14 @@ def elegir():
             print ("Escogiste un número inválido.")
 
     #Cuando los números sean válidos, llamamos a las funciones respectivas
-        #Llamamos 'listaDivisores' a la lista que nos arroja la función
-        # divisores, y la insertamos en tau y sigma
+    #Llamamos a la función phi(m) para calcular el número de primos relativos
     phi_m = phi(m)
+    
+    #Llamamos a la función divisores para saber cuáles son los posibles candidatos
+    # a ser los órdenes de m
     lista_divisores = divisores(phi_m)
+    
+    #Llamamos a la función orden para saber cuál es el mínimo de todos los candidatos
     o = ordm(a, m, lista_divisores)
     print(f"El orden de {a} módulo {m} es {o}.")
 
