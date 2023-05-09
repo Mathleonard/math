@@ -124,19 +124,19 @@ def ordm(a, m, lista_divisores):
 #Definimos la función que buscará las raíces primitivas
 def busca_raiz(raices_primitivas, lista_primos_relativos, phi_phi_m, m, lista_divisores, phi_m):
 
+    
     #La condición es que ya tenemos la cantidad de las raíces primitivas si es
     # igual a phi(phi(m)) (teorema visto en clase)
     if len(raices_primitivas) == phi_phi_m:
 
         #Ordena las raíces primitivas de menor a mayor
-        raices = raices_primitivas.sort()
-        return raices
+        raices_primitivas.sort()
+        return raices_primitivas
 
     else:
-
+        
         #Para cada primo relativo, calculará su orden
         for primo_relativo in lista_primos_relativos:
-
 
             orden = ordm(primo_relativo, m, lista_divisores)
 
@@ -156,7 +156,14 @@ def busca_raiz(raices_primitivas, lista_primos_relativos, phi_phi_m, m, lista_di
                 lista_primos_relativos.remove(i_m)
 
                 #Vuelve a llamar a la función con las listas modificadas anteriormente
-                busca_raiz(raices_primitivas, lista_primos_relativos, phi_phi_m, m, lista_divisores, phi_m)
+                return busca_raiz(raices_primitivas, lista_primos_relativos, phi_phi_m, m, lista_divisores, phi_m)
+
+#Definimos la función que obtendrá el índice
+def indice(a, m, r):
+
+    for i in range(1, m):
+        if ((r**i)-a)%m == 0:
+            return i
 
 def elegir():
 
@@ -181,7 +188,7 @@ def elegir():
 
             print ("Escogiste un número inválido.")
     
-    #Elegimos una segunda condición, ya que también debe ser un entero positivo
+    #Elegimos una segunda condición, ya que también debe ser un entero entre 1 y m
     valid_input_2 = False
 
     while not valid_input_2:
@@ -249,11 +256,33 @@ def elegir():
         
         #Llama a la función para obtener todas las raíces primitivas
         raices = busca_raiz(raices_primitivas, lista_primos_relativos2, phi_phi_m, m, lista_divisores, phi_m)
-        print(f"Las raíces primitivas de {m} son {raices}.")
+        print(f"Las raíces primitivas de {m} son: {raices}.")
 
     else:
         #Si no encontró ninguna de las raíces primitivas, en el 'while' pasado, entonces
         # no se sigue ninguna parte del código.
         print(f"{m} no tiene raíces primitivas.")
+    
+    #Elegimos una tercera condición, ya que también debe ser una raíz primitiva
+    valid_input_3 = False
+    
+    while not valid_input_3:
+
+        r = int(input("Escoge una de las raíces primitivas listadas anteriormente: "))
+
+        if r in raices:
+
+            valid_input_3 = True
+            print (f"Escogiste la raíz primitiva {r}.")
+
+        else:
+
+            print ("Escogiste un número inválido.")
+    
+    
+    #Llamamos a la función índice
+    i = indice(a, m, r)
+    
+    print(f"El índice de {a} módulo {m} con la raíz primitiva {r} es {i}.")
     
 elegir()
