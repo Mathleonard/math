@@ -27,7 +27,7 @@ def algoritmo_div(b, r):
 
 #La función 'mcm()' regresará el mcm de 2 números.
 def mcm(a, b, r):
-    m = abs(a*b)//r
+    m = abs(a*b)/r
     print(f"El mínimo común múltiplo es {m}.")
     return m
 
