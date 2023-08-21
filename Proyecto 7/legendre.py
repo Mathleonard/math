@@ -42,7 +42,7 @@ def legendre_Gauss(a,p):
         lista_residuos = []
         for i in range(1,b+1):
             lista_residuos.append((a*i)%p)
-        
+
         c = p/2
         #Hacemos la lista de los residuos mayores a p/2
         lista_contada = []
