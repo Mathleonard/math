@@ -11,6 +11,7 @@ def algoritmo_div(b, r):
     #'f' permite ingresar variables dentro de un texto común (string)
     #Las variables se ponen entre llaves, cuando estamos en texto común
     procedimiento_txt = (f"{b}={r}({cociente_ad})+({residuo_ad})")
+    print(procedimiento_txt)
 
     #La función 'if' empieza como un 'si (condición)'
     #'!=' significa 'no es igual a'
